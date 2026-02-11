@@ -25,6 +25,14 @@ export const routes = [
         handler: (req, res) => {
             const { title, description } = req.body
 
+            console.log(req.body)
+
+            if (!req.body) {
+                return res
+                    .writeHead(404)
+                    .end(JSON.stringify({ message: 'No informations found' }))
+            }
+
             const task = {
                 id: randomUUID(),
                 title,
